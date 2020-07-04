@@ -15,9 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->group(function() {
-    Route::post('/post/albums/','ContentController@post_albums')->name('post.albums');
-    Route::post('/post/pc/games/','ContentController@post_games')->name('post.games');
-    Route::post('/post/movies/','ContentController@post_movies')->name('post.movies');
-    Route::post('/post/series/','ContentController@post_series')->name('post.series');
+
 
 });
