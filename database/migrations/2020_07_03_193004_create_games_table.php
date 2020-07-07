@@ -28,7 +28,7 @@ class CreateGamesTable extends Migration
             $table->bigInteger('order_count')->default(0);
             $table->bigInteger('status')->default(0);
             $table->string('youtube_id');
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 

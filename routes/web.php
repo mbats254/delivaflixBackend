@@ -17,12 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/add/albums','ContentController@add_albums')->name('add.albums');
-    Route::get('/add/games','ContentController@add_games')->name('add.games');
-    Route::get('/add/movies','ContentController@add_movies')->name('add.movies');
-    Route::get('/add/series','ContentController@add_series')->name('add.series');
+    Route::get('/add/albums','InputController@add_albums')->name('add.albums');
+    Route::get('/add/games','InputController@add_games')->name('add.games');
+    Route::get('/add/movies','InputController@add_movies')->name('add.movies');
+    Route::get('/add/series','InputController@add_series')->name('add.series');
     Route::post('/post/albums/','ContentController@post_albums')->name('post.albums');
     Route::post('/post/pc/games/','ContentController@post_games')->name('post.games');
-    Route::post('/post/movies/','ContentController@post_movies')->name('post.movies');
+    Route::get('/post/movies/','ContentController@post_movies')->name('post.movies');
     Route::post('/post/series/','ContentController@post_series')->name('post.series');
+    Route::post('/update/link/database','ContentController@updated_link')->name('update.link');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

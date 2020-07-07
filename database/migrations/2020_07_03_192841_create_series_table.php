@@ -34,7 +34,7 @@ class CreateSeriesTable extends Migration
             $table->bigInteger('order_count');
             $table->string('url');
             $table->bigInteger('imdb_id');
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 

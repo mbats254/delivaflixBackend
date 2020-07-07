@@ -23,18 +23,18 @@ class CreateMoviesTable extends Migration
             $table->longText('plot');
             $table->longText('starring');
             $table->bigInteger('size');
-            $table->bigInteger('year');
+            $table->string('year');
             $table->bigInteger('price');
             $table->bigInteger('quality');
             $table->bigInteger('duration');
             $table->bigInteger('status')->default(0);
-            $table->bigInteger('companies');
-            $table->bigInteger('product_code');
+            $table->longText('companies');
+            $table->string('product_code');
             $table->bigInteger('rating');
-            $table->bigInteger('order_count');
+            $table->bigInteger('order_count')->default(0);
             $table->string('youtube_id');
             $table->bigInteger('imdb_id');
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 

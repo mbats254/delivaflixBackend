@@ -28,7 +28,7 @@ class CreateAlbumsTable extends Migration
             $table->longText('tracklist');
             $table->bigInteger('order_count')->default(0);
             $table->bigInteger('status')->default(0);
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 
