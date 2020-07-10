@@ -3,7 +3,7 @@
 @extends('layouts.app', ['title' => __('User Management')])
 
 @section('content')
-    @include('users.partials.header', ['title' => __('Add Movies')])
+    @include('users.partials.header', ['title' => __('Add Series')])
     <style>
             .alert-success{
                 display: none;
@@ -17,17 +17,17 @@
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('Add Movies Details') }}</h3>
+                                <h3 class="mb-0">{{ __('Add Series Details') }}</h3>
                             </div>
 
                         </div>
                     <div class="card-body">
-                            <form method='POST' action='{{ route('post.movies') }}' enctype="multipart/form-data" id="movie_form">
+                            <form method='POST' action='{{ route('post.series') }}' enctype="multipart/form-data" id="movie_form">
                                     @csrf
                                    <center> <strong>TMDB Search</strong> <br></center>
                                 <div class="form-group{{ $errors->has('application_form') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label">{{ __('Movie Name') }}</label>
-                                        <input type="text" name="movie_name" placeholder="Movie Name" id="imdbsrch" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required autofocus>
+                                        <label class="form-control-label">{{ __('Series Name') }}</label>
+                                        <input type="text" name="series_name" placeholder="Series Name" id="imdbsrch" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required autofocus>
                                     </div>
                                     <input type="button" class="btn btn-success mt-4" id="imdbsbmt" value="Search">
                                     <div id='searchitems' class="row">
@@ -44,7 +44,7 @@
                                                 <div class="mid-1 agileits_w3layouts_mid_1_home"><img src="" title="album-name" class="movie-img img-responsive" alt="" />
                                                   <div class="w3l-movie-text">
                                                     <h6><a class="movie_name" href=""></a></h6>
-                                                   <Strong><strong></strong></Strong> <p class="movie_id" name="">MovieID:
+                                                   <Strong><strong></strong></Strong> <p class="movie_id" name="">SeriesID:
                                                     </p>
                                                   </div>
                                                   <div class="mid-2 agile_mid_2_home"><p class='release_date'></p> <p class="plot hide"></p>
@@ -67,14 +67,11 @@
 
 
                                 <div class="form-group{{ $errors->has('application_form') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label">{{ __('Movie Quality') }}</label>
-                                   <select class="form-control" name="quality">
-                                       <option class="form-control">720p</option>
-                                       <option class="form-control">1080p</option>
-                                   </select>
+                                    <label class="form-control-label">{{ __('Seasons Available') }}</label>
+                                    <input type="number" name="season_available" id="season_available" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required  autofocus>
                                 </div>
                                 <div class="alert alert-success" role="alert">
-                                        <strong>Well done!</strong> Movie Successfuly Added
+                                        <strong>Well done!</strong> Series Successfuly Added
                                 </div>
                                 <input type="submit" class="btn btn-success mt-4" value="Submit">
 
@@ -87,7 +84,7 @@
         </div>
 <script type="text/javascript">
 $(document).ready(function(){
-//TMDB Movie Search
+//TMDB Series Search
 moviearr = [];
                  baseURL = 'https://api.themoviedb.org/3/';
                  baseImageURL = 'https://image.tmdb.org/t/p/';
@@ -99,7 +96,7 @@ moviearr = [];
                  searchstr = $('#imdbsrch').val();
 
                  $('#searchitems').empty();
-                 $.getJSON(''+baseURL+'search/movie?api_key='+APIKEY+'&query='+searchstr, function(response){
+                 $.getJSON(''+baseURL+'search/tv?api_key='+APIKEY+'&query='+searchstr, function(response){
                  $('#imdbsbmt').attr('value', 'search');
                 //    $('#output').html(JSON.stringify(response));
                     len = response.results.length;
@@ -124,16 +121,16 @@ moviearr = [];
                           backdrop_path = first['backdrop_path'];
                           plot = first['overview'];
                         //   alert(plot)
-                          release_date = first['release_date'];
-                          title = first['title'];
+                          release_date = first['first_air_date'];
+                          title = first['original_name'];
                          imagestr = baseImageURL+'w154'+poster_path;
                          $('#tmplt').clone().appendTo('#searchitems');
                          $('#searchitems').find('.item:last-child').removeClass('hide').attr('id', 'itemno_'+idd);
                          $('#itemno_'+idd).find('.movie-img').attr('src', imagestr);
-                        //  $('#itemno_'+idd).find('.movie-img').attr('title', plot);
+                         $('#itemno_'+idd).find('.movie-img').attr('title', plot);
                          $('#itemno_'+idd).find('.movie_name').text(title);
                          $('#itemno_'+idd).find('.release_date').text(release_date);
-                         $('#itemno_'+idd).find('.plot').text(plot);
+                        //  $('#itemno_'+idd).find('.plot').text(plot);
                          $('#itemno_'+idd).find('.select_movie').attr('id', 'btn_'+current);
                          $('#itemno_'+idd).find('.movie_id').append(idd);
                         current++;

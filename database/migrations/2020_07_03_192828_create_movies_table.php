@@ -25,7 +25,7 @@ class CreateMoviesTable extends Migration
             $table->bigInteger('size');
             $table->string('year');
             $table->bigInteger('price');
-            $table->bigInteger('quality');
+            $table->string('quality');
             $table->bigInteger('duration');
             $table->bigInteger('status')->default(0);
             $table->longText('companies');

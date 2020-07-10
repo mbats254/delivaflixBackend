@@ -73,6 +73,13 @@
                     </a>
                 </li>
 
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('add.genres') }}">
+                        <i class="fa fa-magic text-primary"></i> {{ __('Add Genre') }}
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('add.albums') }}">
                         <i class="fa fa-music text-primary"></i> {{ __('Add Album') }}
@@ -82,6 +89,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('add.movies') }}">
                         <i class="fa fa-film text-primary"></i> {{ __('Add Movie') }}
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('add.series') }}">
+                        <i class="fa fa-tv text-primary"></i> {{ __('Add Series') }}
                     </a>
                 </li>
 
