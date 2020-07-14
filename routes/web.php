@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', 'InputController@add_movies')->name('add.movies');
     Route::get('/add/albums','InputController@add_albums')->name('add.albums');
     Route::get('/add/genre','InputController@add_genre')->name('add.genres');
     Route::get('/add/games','InputController@add_games')->name('add.games');
@@ -33,4 +34,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 Auth::routes();
 
+// ['middleware' => ['auth', 'admin']],
+// Route::prefix('admin')->group(function () {
+//     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('admin.login');
+//    Route::post('/login/post', 'Auth\LoginController@login_post_admin')->name('admin.login.post');
+
+//    Route::group(['middleware' => ['auth', 'admin']], function() {
+//         Route::get('/', 'InputController@add_movies')->name('add.movies');
+//     });
+// });
 Route::get('/home', 'HomeController@index')->name('home');

@@ -16,6 +16,9 @@ class Kernel extends ConsoleKernel
         //
     ];
 
+    protected $routeMiddleware = [
+        'admin' => 'App\Http\Middleware\AdminMiddleware',
+    ];
     /**
      * Define the application's command schedule.
      *
