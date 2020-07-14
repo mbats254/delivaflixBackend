@@ -8,6 +8,7 @@ use \App\Games;
 use \App\Movies;
 use \App\Series;
 use \App\Genre;
+use \App\Items;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -354,6 +355,22 @@ $vids = $arr['videos'];
             }
     }
 
+    public function post_items(Request $request)
+    {
+        $this->validate($request, [
+            'item_name' => 'max:255|unique:items|required',
+            'item_table' => 'max:255|unique:items|required',
+        ]);
+
+        $item = Items::updateorCreate([
+            'item_name' => $request->item_name,
+            'item_table' => $request->item_table,
+
+        ]);
+        Log::info($item->item_table." Added Successfully");
+        $request->session()->flash("success",$item->item_table." Added Successfully");
+        return redirect()->back();
+    }
 
 
 }

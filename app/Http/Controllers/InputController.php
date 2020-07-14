@@ -42,4 +42,9 @@ class InputController extends Controller
 
         return view('admin_portal.add_games',compact('genres'));
     }
+
+    public function add_item(Request $request)
+    {
+        return view('admin_portal.add_item');
+    }
 }

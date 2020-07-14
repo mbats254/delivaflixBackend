@@ -81,6 +81,12 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('add.item') }}">
+                        <i class="fa fa-box text-primary"></i> {{ __('Add Item') }}
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('add.albums') }}">
                         <i class="fa fa-music text-primary"></i> {{ __('Add Album') }}
                     </a>
