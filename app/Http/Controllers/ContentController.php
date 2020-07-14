@@ -58,9 +58,9 @@ class ContentController extends Controller
             'title' => 'max:255|unique:games|required',
             'genre' => 'max:255|required',
             'poster' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3072',
-            'youtube_id' => 'required',
             'publisher' => 'max:255|required',
-            'requirements' => 'required'
+            'requirements' => 'required',
+            'size' => 'required'
             ]);
 
             $uniqid = uniqid();
@@ -77,9 +77,9 @@ class ContentController extends Controller
           'size' => $request->size,
           'price' => $request->price,
           'requirements' => $request->requirements,
-          'youtube_id' => $request->youtube_id,
           'publisher' => $request->publisher
         ]);
+
         Log::info($games->title." Added Successfully");
         $request->session()->flash("success",$games->title." Added Successfully");
         return redirect()->back();

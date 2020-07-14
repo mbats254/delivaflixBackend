@@ -27,7 +27,7 @@ class CreateGamesTable extends Migration
             $table->string('publisher');
             $table->bigInteger('order_count')->default(0);
             $table->bigInteger('status')->default(0);
-            $table->string('youtube_id');
+            $table->string('youtube_id')->nullable();
             $table->timestamps();
         });
     }

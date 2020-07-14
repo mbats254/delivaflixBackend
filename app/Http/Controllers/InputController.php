@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use \App\Genre;
 class InputController extends Controller
 {
     //
@@ -29,6 +29,17 @@ class InputController extends Controller
 
     public function add_games(Request $request)
     {
-        return view('admin_portal.add_games');
+        $all_genres  = Genre::get();
+        $genres = [];
+        for($i=0;$i<sizeof($all_genres);$i++)
+        {
+            $item_name = explode(",",$all_genres[$i]->item_name);
+            if(in_array('Games',$item_name))
+            {
+                array_push($genres,$all_genres[$i]->title);
+            }
+        }
+
+        return view('admin_portal.add_games',compact('genres'));
     }
 }

@@ -98,6 +98,12 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('add.games') }}">
+                        <i class="fa fa-gamepad text-primary"></i> {{ __('Add Games') }}
+                    </a>
+                </li>
+
             </ul>
                @endif
 
